@@ -4,13 +4,15 @@ Modal, Image } from 'react-native';
 import { set } from 'react-native-reanimated';
 import firebase from '../../database/firebaseconfig';
 
-console.disableYellowBox=true;
+
 export default function App(){
   const[Email, setEmail] = useState('');
   const[Senha, setSenha] = useState('');
   const[Nome, setNome] = useState('');
   const[Idade, setIdade] = useState('');
   const[Modalv, setModalv] = useState('false');
+  const[CPF] = useState('');
+  const[AccLvl] = useState('');
 
 
   useEffect(() => {
@@ -27,6 +29,10 @@ await firebase.database().ref('nome').once('value', (snapshot) => {
       let uid = value.user.uid;
       firebase.database().ref('Usuarios').child(value.user.uid).set({
         Nome: Nome,
+        Idade: Idade,
+        Email: Email,
+        CPF: null,
+        AccLvl: 1,
       });
       alert('Usuario cadastrado com sucesso.');
       setNome('');
