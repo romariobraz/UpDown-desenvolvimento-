@@ -23,11 +23,10 @@ await firebase.database().ref('nome').once('value', (snapshot) => {
   }, []);
 
   function criaconta(){
-    firebase.auth().createUserWithEmailAndPassword(Email, Senha, Nome).then((value) => {
+    firebase.auth().createUserWithEmailAndPassword(Email, Senha).then((value) => {
       let uid = value.user.uid;
       firebase.database().ref('Usuarios').child(value.user.uid).set({
         Nome: Nome,
-        Idade: Idade,
       });
       alert('Usuario cadastrado com sucesso.');
       setNome('');
