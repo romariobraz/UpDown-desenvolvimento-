@@ -67,7 +67,7 @@ await firebase.database().ref('nome').once('value', (snapshot) => {
             placeholder="Insira seu email" 
             underlineColorAndroid="transparent"
             onChangeText={Email => setEmail(Email)}
-            keyboardType={''} value={Email}/>
+            value={Email}/>
           </View>
 
             <TextInput style={style.Entrada1}
