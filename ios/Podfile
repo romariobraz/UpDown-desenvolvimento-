@@ -3,18 +3,18 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'UpDown' do
+target 'telaPrincipal' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
-
   pod 'react-native-maps', :path => '../node_modules/react-native-maps'
+
+  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
-  target 'UpDownTests' do
+  target 'telaPrincipalTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -29,10 +29,10 @@ target 'UpDown' do
   end
 end
 
-target 'UpDown-tvOS' do
-  # Pods for UpDown-tvOS
+target 'telaPrincipal-tvOS' do
+  # Pods for telaPrincipal-tvOS
 
-  target 'UpDown-tvOSTests' do
+  target 'telaPrincipal-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

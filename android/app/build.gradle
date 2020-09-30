@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.updown"
+        applicationId "com.telaprincipal"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -185,6 +185,10 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
+    implementation  project(':react-native-maps')
+    implementation 'com.google.android.gms:play-services-base:17.2.1'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {

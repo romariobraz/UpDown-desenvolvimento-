@@ -1,10 +1,9 @@
-import React, { Component, useEffect, useState, useContext} from 'react';
+import React, { Component, useEffect, useState} from 'react';
 import { View, Text, Button, StyleSheet, TextInput, KeyboardAvoidingView, ScrollView, TouchableOpacity,
 Modal, Image} from 'react-native';
 import { set, Value } from 'react-native-reanimated';
-import firebase from '../../database/firebaseconfig';  
+import firebase from '../../../../firebaseconfig';  
 import { useNavigation } from '@react-navigation/native';
-import {AutContext} from '../../dados';
 
 export default function Home() {
   const[Login, setLogin] = useState('');
@@ -25,7 +24,6 @@ export default function Home() {
     navigation.navigate('Mapa');
   
   }
-
   
   function logaconta(){
     firebase.auth().signInWithEmailAndPassword(Login, Senha).then(irMapa).catch( (error) => {
@@ -47,7 +45,7 @@ export default function Home() {
           {/* View da logo */}
              <View style={styles.Logo}>
              <Image
-              source={require('../../assets/logosf.png')}
+              source={require('../../../assets/logosf.png')}
               style={{width: 175, height: 230}}
               />
               </View>
@@ -61,7 +59,7 @@ export default function Home() {
                 onChangeText={Login => setLogin(Login)}/>
                   <TouchableOpacity style={styles.btnLogin} onPress={() => {setModalv(true)}}>
                   <Image
-                  source={require('../../assets/botao.png')}
+                  source={require('../../../assets/botao.png')}
                   style={{width: 175, height: 230}}
                   style={styles.Btn1}
                   />
@@ -84,7 +82,7 @@ export default function Home() {
                           setModalv(!Modalv)
                         }}>
                         <Image
-                        source={require('../../assets/botao.png')}
+                        source={require('../../../assets/botao.png')}
                         style={{width: 175, height: 230}}
                         style={styles.Btn1}/>
                         </TouchableOpacity> 
@@ -111,7 +109,7 @@ export default function Home() {
                   onPress={irRecuperar}><Text style={styles.Fonte}> Recuperar senha</Text></TouchableOpacity>
                 </View></View>
                 <View style={styles.Links}>
-                <TouchableOpacity onPress={('')}><Text style={styles.Fonte}>Trabalhe conosco</Text></TouchableOpacity></View>
+                <TouchableOpacity onPress={irMapa}><Text style={styles.Fonte}>Trabalhe conosco</Text></TouchableOpacity></View>
 
    </KeyboardAvoidingView>
         </ScrollView>
@@ -216,7 +214,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     backgroundColor: '#f2f2f2',
     alignSelf:'center',
-    marginTop: 130,
+    marginTop: 180,
     borderRadius: 15,
     flex: 0,
   },
