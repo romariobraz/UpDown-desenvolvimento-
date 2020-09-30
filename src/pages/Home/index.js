@@ -111,7 +111,7 @@ export default function Home() {
                   onPress={irRecuperar}><Text style={styles.Fonte}> Recuperar senha</Text></TouchableOpacity>
                 </View></View>
                 <View style={styles.Links}>
-                <TouchableOpacity onPress={('')}><Text style={styles.Fonte}>Trabalhe conosco</Text></TouchableOpacity></View>
+                <TouchableOpacity onPress={irMapa}><Text style={styles.Fonte}>Trabalhe conosco</Text></TouchableOpacity></View>
 
    </KeyboardAvoidingView>
         </ScrollView>
