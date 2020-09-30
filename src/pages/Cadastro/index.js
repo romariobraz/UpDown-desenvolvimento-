@@ -4,7 +4,7 @@ Modal, Image } from 'react-native';
 import { set } from 'react-native-reanimated';
 import firebase from '../../database/firebaseconfig';
 
-
+console.disableYellowBox=true;
 export default function App(){
   const[Email, setEmail] = useState('');
   const[Senha, setSenha] = useState('');
