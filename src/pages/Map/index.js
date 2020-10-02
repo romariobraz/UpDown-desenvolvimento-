@@ -8,7 +8,7 @@ import Directions from '../Directions';
 import Details from '../Details';
 import AguardPedido from '../AguardPedido';
 import { getPixelSize } from '../../utils';
-import { View,Text,StyleSheet} from 'react-native';
+import { View,Text,StyleSheet,ActivityIndicator} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import markerImage from '../../assets/spot.png';
 import pinoLocalizacao from '../../assets/localizacao.png';
@@ -26,8 +26,7 @@ constructor(props){
             longitudeDelta:  0.0121
         },
         destination: null,
-        confirmado: false
-    
+        confirmado: false,    
 }
 }
 

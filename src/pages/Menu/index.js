@@ -153,8 +153,8 @@ const styles = StyleSheet.create({
     marginLeft:45,
     marginRight:45,
     flex:1,
-    marginTop:'90%',
-    marginBottom:60,
+    marginTop:'85%',
+    marginBottom:'18%',
     borderRadius:40
   },
   imgProfile:{

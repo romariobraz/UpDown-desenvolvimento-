@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "UpDown.app"
-               BlueprintName = "UpDown"
-               ReferencedContainer = "container:UpDown.xcodeproj">
+               BuildableName = "upDown.app"
+               BlueprintName = "upDown"
+               ReferencedContainer = "container:upDown.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "UpDownTests.xctest"
-               BlueprintName = "UpDownTests"
-               ReferencedContainer = "container:UpDown.xcodeproj">
+               BuildableName = "upDownTests.xctest"
+               BlueprintName = "upDownTests"
+               ReferencedContainer = "container:upDown.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "UpDown.app"
-            BlueprintName = "UpDown"
-            ReferencedContainer = "container:UpDown.xcodeproj">
+            BuildableName = "upDown.app"
+            BlueprintName = "upDown"
+            ReferencedContainer = "container:upDown.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "UpDown.app"
-            BlueprintName = "UpDown"
-            ReferencedContainer = "container:UpDown.xcodeproj">
+            BuildableName = "upDown.app"
+            BlueprintName = "upDown"
+            ReferencedContainer = "container:upDown.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

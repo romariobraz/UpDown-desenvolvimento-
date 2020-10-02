@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState, useContext} from 'react';
 import { View, Text, Button, StyleSheet, TextInput, KeyboardAvoidingView, ScrollView, TouchableOpacity,
-Modal, Image} from 'react-native';
+Modal, Image,ActivityIndicator} from 'react-native';
 import { set, Value } from 'react-native-reanimated';
 import firebase from '../../database/firebaseconfig';  
 import { useNavigation } from '@react-navigation/native';
@@ -10,6 +10,8 @@ export default function Home() {
   const[Login, setLogin] = useState('');
   const[Senha, setSenha] = useState('');
   const[Modalv, setModalv] = useState('false');
+  const[loading,setLoading] = useState(false);
+  const[estilo,setEstilo] = useState();
 
   const navigation = useNavigation();
 
@@ -26,13 +28,17 @@ export default function Home() {
   
   }
 
-  
-  function logaconta(){
-    firebase.auth().signInWithEmailAndPassword(Login, Senha).then(irMapa).catch( (error) => {
+
+  async function logaconta(){
+    await firebase.auth().signInWithEmailAndPassword(Login, Senha).then(irMapa).catch( (error) => {
       alert('Senha ou usuário incorretos');
       return;
 
-    })
+    });
+    
+    setLoading(false);
+    setEstilo();
+    
   }
 
  return (
@@ -51,6 +57,11 @@ export default function Home() {
               style={{width: 175, height: 230}}
               />
               </View>
+
+              {/* Carregamento*/}
+             
+              <ActivityIndicator color={'#548AF0'} size={45} animating={loading} style={estilo}/>
+             
 
               {/*Entrada de do login*/}
               <View style={{flexDirection:'row', height:120, alignItems:'center'}}>
@@ -80,8 +91,12 @@ export default function Home() {
                         autoCorrect={false}
                         onChangeText={Senha => setSenha(Senha)}/>
                         <TouchableOpacity style={styles.btnlg2} onPress={() => { 
+
                           logaconta();
-                          setModalv(!Modalv)
+                          setLoading(true);
+                          setEstilo(styles.loading);
+                          setModalv(!Modalv);
+                  
                         }}>
                         <Image
                         source={require('../../assets/botao.png')}
@@ -230,4 +245,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
+  loading: {
+    flex:1,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
  });
