@@ -10,8 +10,8 @@ export default function Home() {
   const[Login, setLogin] = useState('');
   const[Senha, setSenha] = useState('');
   const[Modalv, setModalv] = useState('false');
+  const[Modaload, setModaload] = useState(false);
   const[loading,setLoading] = useState(false);
-  const[estilo,setEstilo] = useState();
 
   const navigation = useNavigation();
 
@@ -35,14 +35,16 @@ export default function Home() {
       return;
 
     });
-    
+
     setLoading(false);
-    setEstilo();
+    setModaload(false);
     
   }
 
  return (
+
   <ScrollView keyboardShouldPersistTaps={true}>
+    
   <KeyboardAvoidingView style={styles.corpo}>
 
         {/* View do cabeçalho (e da splash/) */}
@@ -57,11 +59,6 @@ export default function Home() {
               style={{width: 175, height: 230}}
               />
               </View>
-
-              {/* Carregamento*/}
-             
-              <ActivityIndicator color={'#548AF0'} size={45} animating={loading} style={estilo}/>
-             
 
               {/*Entrada de do login*/}
               <View style={{flexDirection:'row', height:120, alignItems:'center'}}>
@@ -78,6 +75,11 @@ export default function Home() {
                   />
                   </TouchableOpacity>
               </View>
+
+              {/* Modal do Carregamento*/}
+                <Modal animationType={"fade"}  visible={Modaload} transparent={true}>
+                  <ActivityIndicator color={'#548AF0'}  size={50} animating={loading} style={styles.estiloLoading}/>
+                </Modal>
               
               {/*Modal da senha*/}
               <Modal animationType={"slide"}  visible={Modalv} transparent={true} backgroundColor={'#f2f2f2'}>
@@ -93,8 +95,8 @@ export default function Home() {
                         <TouchableOpacity style={styles.btnlg2} onPress={() => { 
 
                           logaconta();
+                          setModaload(true);
                           setLoading(true);
-                          setEstilo(styles.loading);
                           setModalv(!Modalv);
                   
                         }}>
@@ -117,7 +119,7 @@ export default function Home() {
                     </Text>
                   </TouchableOpacity>
                 
-
+           
                 {/*Linkagem*/}
                 <View style={{flexDirection:'row', alignItems:'center'}}>
                 </View>
@@ -245,7 +247,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
-  loading: {
+  estiloLoading: {
     flex:1,
     position: 'absolute',
     left: 0,
@@ -253,6 +255,7 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     alignItems: 'center',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+    backgroundColor:'#ffffff',
+  },
  });
