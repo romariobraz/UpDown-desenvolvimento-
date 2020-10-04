@@ -91,6 +91,7 @@ export default function Home() {
                         style={styles.EntradaTexto1}
                         placeholder='Insira sua senha'
                         autoCorrect={false}
+                        secureTextEntry={true}
                         onChangeText={Senha => setSenha(Senha)}/>
                         <TouchableOpacity style={styles.btnlg2} onPress={() => { 
 
