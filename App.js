@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import{StatusBar} from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
+import{StatusBar, useEffect, Platform} from 'react-native';
 import Perfil from './src/pages/Perfil';
 import ListaHistorico from './src/pages/Historico';
 import Premium from './src/pages/Premium';
@@ -16,16 +17,22 @@ import Autenticador, { AutContext } from './src/dados'
 
 const Stack = createStackNavigator();
 
+SplashScreen.hide();
+
 StatusBar.setBarStyle( 'light-content',true);
 
 StatusBar.setBackgroundColor('#548AF0');
 
 export default function App(){
 
+
     const { singed } = useContext(AutContext);
 
   return(
     <NavigationContainer>
+
+      {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
+      
       <Autenticador>
       <Stack.Navigator initialRouteName="Home" >
         <Stack.Screen name="Mapa" component={Map} options={{headerShown:false}} />

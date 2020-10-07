@@ -78,7 +78,7 @@ await firebase.database().ref('nome').once('value', (snapshot) => {
             <TextInput style={style.Entrada1}
             placeholder="Nome e Sobrenome" underlineColorAndroid="transparent" onChangeText={Nome => setNome(Nome)}
             value={Nome}/>
-            <TextInput style={style.Entrada1} placeholder=" Data de Nascimento     __/__/____" 
+            <TextInput style={style.Entrada1} placeholder=" Data de Nascimento     __/__/____"  
             underlineColorAndroid="transparent" 
             onChangeText={Idade => setIdade(Idade)} keyboardType={'numeric'} value={Idade}/>
             <TouchableOpacity style={style.btnprox} onPress={() => {setModalv(true)}}>
@@ -93,9 +93,9 @@ await firebase.database().ref('nome').once('value', (snapshot) => {
                   <View style={style.modal1} >
                   <Text style={style.Texto1}>Agora vamos proteger sua conta UD:</Text>
                   <TextInput style={style.Entrada1} underlineColorAndroid="transparent"
-                  placeholder=" Crie sua senha " onChangeText={() => {}}/>
+                  placeholder=" Crie sua senha " secureTextEntry={true} onChangeText={() => {}}/>
                   <TextInput style={style.Entrada1} underlineColorAndroid="transparent" 
-                  placeholder=" Repita sua senha" onChangeText={Senha => setSenha(Senha)}/>
+                  placeholder=" Repita sua senha" secureTextEntry={true} onChangeText={Senha => setSenha(Senha)}/>
                   <TouchableOpacity style={style.btnprox} onPress={() => { criaconta()}}>
                   <Text style={style.txtprox}>Concluir</Text>
                   </TouchableOpacity>

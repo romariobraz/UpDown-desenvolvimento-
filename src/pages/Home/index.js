@@ -78,7 +78,7 @@ export default function Home() {
 
               {/* Modal do Carregamento*/}
                 <Modal animationType={"fade"}  visible={Modaload} transparent={true}>
-                  <ActivityIndicator color={'#548AF0'}  size={50} animating={loading} style={styles.estiloLoading}/>
+                  <ActivityIndicator color={'#FFFFFF'}  size={50} animating={loading} style={styles.estiloLoading}/>
                 </Modal>
               
               {/*Modal da senha*/}
@@ -86,6 +86,7 @@ export default function Home() {
               <KeyboardAvoidingView behavior='padding'style={styles.container}>
                 <View style={styles.modal1}>
                   <Text style={styles.FonRec}>Insira sua senha:</Text>
+
                     <View style={styles.camposenha}>
                         <TextInput
                         style={styles.EntradaTexto1}
@@ -257,6 +258,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'#ffffff',
+    backgroundColor:'#548AF0',
   },
  });
