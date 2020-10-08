@@ -88,6 +88,23 @@ export default function Home() {
                   <Text style={styles.FonRec}>Insira sua senha:</Text>
 
                     <View style={styles.camposenha}>
+
+                        <View>
+
+                          <TouchableOpacity 
+                          style={{width:30,height:30,borderRadius:50,marginTop:-75,marginLeft:5,position:'absolute'}}
+                          onPress={() => {
+                            setModalv(!Modalv);
+                          }}>
+
+                          <Image
+                          style={{width:30,height:30}}
+                          source={require('../../assets/close.png')}
+                          />
+                          </TouchableOpacity>
+
+                        </View>
+
                         <TextInput
                         style={styles.EntradaTexto1}
                         placeholder='Insira sua senha'
