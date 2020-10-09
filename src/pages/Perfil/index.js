@@ -1,52 +1,165 @@
-import React from 'react';
-import { View, Text, StatusBar,TouchableOpacity,Image,StyleSheet } from 'react-native';
+import React,{useState} from 'react';
+import { View, 
+   Text,
+   StatusBar,
+   TouchableOpacity,
+   Image,StyleSheet,
+   TextInput,
+   Button,
+   Alert,
+   KeyboardAvoidingView,
+   ScrollView,
+   Modal,} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 
 export default function Perfil() {
+
   const navigation = useNavigation();
 
-  function irPerfil(){
-    navigation.navigate('Perfil');
-  }
+  const[modalSenha,setModalSenha] = useState(false);
+  const[exibiSenha,setExibeSenha] = useState(true);
 
   StatusBar.setBarStyle( 'light-content',true);
   StatusBar.setBackgroundColor('#548AF0');
 
  return (
-   <View styles={{flex:1}}>
-     
-     <Image
-          source={{uri:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}}
-          style={styles.imgProfile}/>
 
-     <View style={{flex:1}}>
+  <ScrollView keyboardShouldPersistTaps={true}>
+      <KeyboardAvoidingView styles={{flex:1}}>
 
-     <TouchableOpacity style={styles.opcoes1}>
+        <View style={{borderBottomWidth:2,borderBottomColor:'rgba(84, 138, 240,0.3)',marginBottom:20}}>
 
-      <Image  style={styles.icon} source={{uri:'https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Settings-icon.png'}}/>
-      <Text style={styles.text}>Configuracoes</Text>
+            <TouchableOpacity style={styles.imgProfile} >
+            
+              <Image source={{uri:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}}
+              style={styles.imgProfile}/>
 
-     </TouchableOpacity>
+              <Image source={require('../../assets/edit.png')}
+              style={{width:30,height:30,position:'absolute',marginLeft:10,marginTop:95}}/>
 
-     <TouchableOpacity style={styles.opcoes}>
+            </TouchableOpacity>
+        </View>
+          
+            
 
-      <Image  style={styles.icon} source={{uri:'https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Settings-icon.png'}}/>
-      <Text style={styles.text}>Configuracoes</Text>
+            <View style={styles.opcoes}>
 
-     </TouchableOpacity>
+              <Text style={styles.text}>Nome:</Text>
+              <TextInput
+                            style={styles.EntradaTexto1}
+                            defaultValue='Tester Tester'
+                            autoCorrect={false}
+                            />
 
-     <TouchableOpacity style={styles.opcoes}>
+            </View>
 
-      <Image  style={styles.icon} source={{uri:'https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Settings-icon.png'}}/>
-      <Text style={styles.text}>Configuracoes</Text>
+            <View style={styles.opcoes}>
 
-     </TouchableOpacity>
-      
+              <Text style={styles.text}>Telefone:</Text>
+              <TextInput
+                            style={styles.EntradaTexto1}
+                            defaultValue='(83) 98856-7896'
+                            autoCorrect={false}
+                            />
 
-    </View>
+            </View>
 
-   </View>
+            <View style={styles.opcoes}>
+
+              <Text style={styles.text}>E-mail:</Text>
+              <TextInput
+                            style={styles.EntradaTexto1}
+                            defaultValue='teste@teste.com'
+                            autoCorrect={false}
+                            />
+
+            </View>
+
+            <View style={styles.opcoes}>
+
+              <Text style={styles.text}>Data de nascimento:</Text>
+              <TextInput
+                            style={styles.EntradaTexto1}
+                            defaultValue='25/12/1992'
+                            dataDetectorTypes='date'
+                            autoCorrect={false}
+                            />
+
+            </View>
+
+            <View style={styles.opcoes}>
+
+              <Text style={styles.text}>Senha:</Text>
+              <TextInput
+                            style={styles.EntradaTexto1}
+                            defaultValue='teste123'
+                            onFocus={() => setModalSenha(true)}
+                            autoCorrect={false}
+                            secureTextEntry={true}/>
+
+            </View>
+
+            <View  style={styles.botaoSalvar} >
+              <Button title='Salvar'/>
+            </View>
+
+              
+              <Modal animationType={"slide"}  visible={modalSenha} transparent={true}>
+                    
+                <View style={{backgroundColor:'rgba(255, 255, 255,0.8)'}}>
+                  <View style={styles.modalSenha} >
+
+                      <View>
+
+                        <TouchableOpacity 
+                        style={{width:30,height:30,borderRadius:50,marginLeft:-5,
+                        marginTop:-5  ,backgroundColor:'#fff'}}
+                        onPress={() => {
+                          setModalSenha(!modalSenha);
+                        }}>
+
+                        <Image
+                        style={{width:30,height:30}}
+                        source={require('../../assets/close.png')}
+                        />
+                        </TouchableOpacity>
+
+                      </View>
+
+                        <Text style={styles.text}>Senha:</Text>
+                        <TextInput
+                                      style={styles.EntradaTexto1}
+                                      defaultValue='teste123'
+                                      autoCorrect={false}
+                                      secureTextEntry={true}/>
+
+
+                        <Text style={styles.text}>Nova senha:</Text>
+                        <TextInput
+                                      style={styles.EntradaTexto1}
+                                      defaultValue='teste123'
+                                      autoCorrect={false}
+                                      secureTextEntry={exibiSenha}/>
+                    
+
+                        <Text style={styles.text}>Digite novamente:</Text>
+                        <TextInput
+                                      style={styles.EntradaTexto1}
+                                      defaultValue='teste123'
+                                      autoCorrect={false}
+                                      secureTextEntry={exibiSenha}/>
+
+                        <View  style={styles.botaoSalvar} >
+                          <Button title='Redefinir'/>
+                        </View>
+                  </View>
+                </View>
+                
+              </Modal>
+
+      </KeyboardAvoidingView>
+   </ScrollView>
   );
 }
 
@@ -55,41 +168,53 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 60,
-    marginLeft: 140,
-    marginTop: 25
+    marginTop: 10,
+    alignSelf:'center',
+    marginBottom:30,
   },
   icon:{
-    width:30,
-    height:30,
-    marginTop:-14,
-    marginRight: 4
+    width:45,
+    height:45,
+    marginRight: 4,
+    alignSelf:'center',
+    marginTop:-2,
+    marginLeft:10
   },
   text:{
     height:50,
-    fontSize:15,
-    fontWeight:'bold',  
-    alignContent:'center',
-    marginTop:-10
+    fontSize:18, 
+    marginTop:5,
+    marginBottom:-20,
+    marginLeft:'5%'
+
   },
   opcoes:{
-    flex:1,
-    flexDirection:'row',
-    alignContent:'center',
-    justifyContent:'center',
-    marginTop:30,
-    borderBottomWidth:1,
-    padding:20,
-    marginBottom:-30
+
+    alignSelf:'flex-start',
+    marginBottom:5,
   },
-  opcoes1:{
-    flex:1,
-    flexDirection:'row',
-    alignContent:'center',
-    justifyContent:'center',
-    marginTop:30,
-    borderBottomWidth:1,
-    padding:20,
-    marginBottom:-30,
-    borderTopWidth:1
-  }
+  EntradaTexto1:{
+    backgroundColor:'#FFF',
+    width: 250,
+    color:'#222',
+    fontSize: 17,
+    marginLeft:'5%',
+    borderRadius:10
+  },
+  botaoSalvar:{
+
+    marginRight:'10%',
+    marginLeft:'10%',
+    marginTop:'8%',
+  
+  },
+  modalSenha:{
+    height:'45%',
+    marginTop:'55%',
+    marginBottom:'50%',
+    marginLeft:'15%',
+    marginRight:'17%',
+    backgroundColor:'#94c9e4',
+    borderRadius:30
+  },
 });
