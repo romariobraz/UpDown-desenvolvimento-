@@ -6,7 +6,6 @@ import { View,
    Image,StyleSheet,
    TextInput,
    Button,
-   Alert,
    KeyboardAvoidingView,
    ScrollView,
    Modal,} from 'react-native';
@@ -19,6 +18,7 @@ export default function Perfil() {
 
   const[modalSenha,setModalSenha] = useState(false);
   const[exibiSenha,setExibeSenha] = useState(true);
+  const[showSenha,setShowSenha] = useState(require('../../assets/show.png'));
 
   StatusBar.setBarStyle( 'light-content',true);
   StatusBar.setBackgroundColor('#548AF0');
@@ -106,8 +106,8 @@ export default function Perfil() {
 
               
               <Modal animationType={"slide"}  visible={modalSenha} transparent={true}>
-                    
-                <View style={{backgroundColor:'rgba(255, 255, 255,0.8)'}}>
+                
+                <ScrollView keyboardShouldPersistTaps={true} style={{backgroundColor:'rgba(255, 255, 255,0.8)'}}>
                   <View style={styles.modalSenha} >
 
                       <View>
@@ -141,6 +141,18 @@ export default function Perfil() {
                                       defaultValue='teste123'
                                       autoCorrect={false}
                                       secureTextEntry={exibiSenha}/>
+                        
+                        <TouchableOpacity onPress={() => {
+  
+                            setShowSenha(require('../../assets/hide.png'));
+                            setExibeSenha(false);
+                         
+                        }}
+
+                        style={{position:'absolute',marginLeft:230,marginTop:156}}>
+                          <Image source={showSenha}
+                         style={{width:25,height:25}}/>
+                        </TouchableOpacity>
                     
 
                         <Text style={styles.text}>Digite novamente:</Text>
@@ -150,11 +162,24 @@ export default function Perfil() {
                                       autoCorrect={false}
                                       secureTextEntry={exibiSenha}/>
 
+                          
+                          <TouchableOpacity onPress={() => {
+                            
+                            setShowSenha(require('../../assets/hide.png'));
+                            setExibeSenha(false);
+
+                          }}
+
+                          style={{position:'absolute',marginLeft:230,marginTop:240}}>
+                          <Image source={showSenha}
+                          style={{width:25,height:25}}/>
+                          </TouchableOpacity>
+
                         <View  style={styles.botaoSalvar} >
                           <Button title='Redefinir'/>
                         </View>
                   </View>
-                </View>
+                </ScrollView>
                 
               </Modal>
 
@@ -211,7 +236,7 @@ const styles = StyleSheet.create({
   modalSenha:{
     height:'45%',
     marginTop:'55%',
-    marginBottom:'50%',
+    marginBottom:'55%',
     marginLeft:'15%',
     marginRight:'17%',
     backgroundColor:'#94c9e4',
