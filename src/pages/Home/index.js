@@ -82,7 +82,7 @@ export default function Home() {
                 </Modal>
               
               {/*Modal da senha*/}
-              <Modal animationType={"slide"}  visible={Modalv} transparent={true} backgroundColor={'#f2f2f2'}>
+              <Modal animationType={"slide"}  visible={Modalv} transparent={true}>
               <KeyboardAvoidingView behavior='padding'style={styles.container}>
                 <View style={styles.modal1}>
                   <Text style={styles.FonRec}>Insira sua senha:</Text>
@@ -265,6 +265,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     justifyContent: "center",
+    backgroundColor:'rgba(255, 255, 255,0.9)'
   },
   estiloLoading: {
     flex:1,

@@ -9,6 +9,7 @@ import { View,
    KeyboardAvoidingView,
    ScrollView,
    Modal,} from 'react-native';
+import { TextInputMask } from 'react-native-masked-text';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -18,6 +19,8 @@ export default function Perfil() {
 
   const[modalSenha,setModalSenha] = useState(false);
   const[exibiSenha,setExibeSenha] = useState(true);
+  const[data,setData] = useState('05081992');
+  const[phone,setPhone] = useState('83986965632');
   const[showSenha,setShowSenha] = useState(require('../../assets/show.png'));
 
   StatusBar.setBarStyle( 'light-content',true);
@@ -57,11 +60,19 @@ export default function Perfil() {
             <View style={styles.opcoes}>
 
               <Text style={styles.text}>Telefone:</Text>
-              <TextInput
-                            style={styles.EntradaTexto1}
-                            defaultValue='(83) 98856-7896'
-                            autoCorrect={false}
-                            />
+              <TextInputMask
+                  style={styles.EntradaTexto1}
+                  type={'cel-phone'}
+                  options={{
+                    maskType: 'BRL',
+                    withDDD: true,
+                    dddMask: '(99) '
+                  }}
+                  value={phone}
+                  onChangeText={text => {
+                    setPhone(text);
+                  }}
+                />
 
             </View>
 
@@ -79,13 +90,17 @@ export default function Perfil() {
             <View style={styles.opcoes}>
 
               <Text style={styles.text}>Data de nascimento:</Text>
-              <TextInput
-                            style={styles.EntradaTexto1}
-                            defaultValue='25/12/1992'
-                            dataDetectorTypes='date'
-                            autoCorrect={false}
-                            />
 
+              <TextInputMask 
+                          style={styles.EntradaTexto1}
+                          type={'datetime'}
+                          options={{
+                             format: 'DD/MM/YYYY'
+                          }}
+                          value={data}
+                          onChangeText={text => {
+                            setData(text);
+                          }}/>
             </View>
 
             <View style={styles.opcoes}>
@@ -239,7 +254,7 @@ const styles = StyleSheet.create({
     marginBottom:'55%',
     marginLeft:'15%',
     marginRight:'17%',
-    backgroundColor:'#94c9e4',
-    borderRadius:30
+    backgroundColor:'#35AAFF',
+    borderRadius:45
   },
 });

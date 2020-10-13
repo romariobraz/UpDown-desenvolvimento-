@@ -38,7 +38,7 @@ export default function App(){
         <Stack.Screen name="Mapa" component={Map} options={{headerShown:false}} />
         <Stack.Screen name="Perfil" component={Perfil} 
         options={{
-          title: 'Perfil',
+          title: 'Editar perfil',
           headerStyle: {
             backgroundColor: '#548AF0',
           },
@@ -63,7 +63,17 @@ export default function App(){
         <Stack.Screen name="Ajuda" component={Ajuda} />
         <Stack.Screen name="Sobre" component={Sobre} />
         <Stack.Screen name="Home" component={Home} options={{headerShown:false}}  />
-        <Stack.Screen name="Cadastro" component={Cadastro} />
+        <Stack.Screen name="Cadastro" component={Cadastro}
+          options={{
+            headerStyle: {
+              backgroundColor: '#548AF0',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+         />
         <Stack.Screen name="Recuperar" component={Recuperar} />
         <Stack.Screen name="Aguardar pedido" component={TelaEspera} options={{headerShown:false}} />
       </Stack.Navigator>

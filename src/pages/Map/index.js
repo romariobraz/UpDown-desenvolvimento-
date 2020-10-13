@@ -178,7 +178,7 @@ confirmarRecolhimento = () => {
 
 const styles = StyleSheet.create({
 locationBox:{
-    backgroundColor: '#548AF0',
+    backgroundColor: '#35AAFF',
     shadowColor: '#000',
     shadowOffset: {  width: 10,  height: 10 },
     shadowOpacity: 1.0,

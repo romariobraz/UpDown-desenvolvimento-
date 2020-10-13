@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState} from 'react';
 import { View, Text, Button, StyleSheet, TextInput, KeyboardAvoidingView, ScrollView, TouchableOpacity,
 Modal, Image } from 'react-native';
 import { set } from 'react-native-reanimated';
+import { TextInputMask } from 'react-native-masked-text';
 import firebase from '../../database/firebaseconfig';
 
 console.disableYellowBox=true;
@@ -78,9 +79,16 @@ await firebase.database().ref('nome').once('value', (snapshot) => {
             <TextInput style={style.Entrada1}
             placeholder="Nome e Sobrenome" underlineColorAndroid="transparent" onChangeText={Nome => setNome(Nome)}
             value={Nome}/>
-            <TextInput style={style.Entrada1} placeholder=" Data de Nascimento     __/__/____"  
-            underlineColorAndroid="transparent" 
-            onChangeText={Idade => setIdade(Idade)} keyboardType={'numeric'} value={Idade}/>
+               <TextInputMask style={style.Entrada1}
+                           type={'datetime'}
+                           options={{
+                             format: 'DD/MM/YYYY'
+                           }}
+                           value={Idade}
+                           placeholder="Digite sua data de nascimento"
+                           onChangeText={text => {
+                             setIdade(text);
+                           }}/>
             <TouchableOpacity style={style.btnprox} onPress={() => {setModalv(true)}}>
             <Text style={style.txtprox}>Continuar
             </Text></TouchableOpacity>
@@ -90,7 +98,20 @@ await firebase.database().ref('nome').once('value', (snapshot) => {
 
 {/*Modal de cadastrar senha*/}
     <Modal  animationType={"slide"}  visible={Modalv} transparent={true} >
+                
                   <View style={style.modal1} >
+                  <TouchableOpacity 
+                            style={{width:30,height:30,marginRight:325,marginTop:-35}}
+                            onPress={() => {
+                              setModalv(!Modalv);
+                            }}>
+
+                            <Image
+                            style={{width:30,height:30,position:'absolute'}}
+                            source={require('../../assets/close.png')}
+                            />
+                            
+                  </TouchableOpacity>
                   <Text style={style.Texto1}>Agora vamos proteger sua conta UD:</Text>
                   <TextInput style={style.Entrada1} underlineColorAndroid="transparent"
                   placeholder=" Crie sua senha " secureTextEntry={true} onChangeText={() => {}}/>
@@ -174,7 +195,7 @@ modal1:{
   backgroundColor:'#f2f2f2',
   borderWidth: 5,
   borderRadius: 3,
-  margin: 25,
+  marginLeft:20,
   marginTop: 180,
   shadowColor:'black',
 }
